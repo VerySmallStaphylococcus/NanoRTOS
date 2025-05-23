@@ -39,4 +39,20 @@ int Tasks_loop(task_info tasks[numof_tasks]) {
                 return 1;
         }
 }
+
+    //tasks loop
+    int tasks_p = 0; //tasks pointer
+    while (1)   {
+        int err = task_list[tasks_p].function(task_list[tasks_p].function_arg);
+        
+        //error checking
+        if (err == 0)   continue;
+        if (err == 1) return 1;
+
+        tasks_p++;
+        if (tasks_p >= numof_tasks) {
+            tasks_p = 0;
+        }
+    }
+    
 }
